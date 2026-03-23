@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone repository') {
+            steps {
+                git: 'https://github.com/DmitryTolochko/mlops_practice.git', branch: 'main'
+            }
+        }
+
+        stage('Install dependencies') {
+            steps {
+                sh 'pip install -r lab2/requirements.txt'
+            }
+        }
+
+        stage('Download data') {
+            steps {
+                sh 'python lab2/scripts/load_data.py'
+            }
+        }
+
+        stage('Preprocess data') {
+            steps {
+                sh 'python lab2/scripts/preprocess_data.py'
+            }
+        }
+
+        stage('Train model') {
+            steps {
+                sh 'python lab2/scripts/train_model.py'
+            }
+        }
+        
+        stage('Evaluate model') {
+            steps {
+                sh 'python lab2/scripts/evaluate_model.py'
+            }
+        }
+    }
+
+}
