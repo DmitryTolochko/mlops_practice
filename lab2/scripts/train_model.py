@@ -14,6 +14,11 @@ model = RandomForestRegressor(n_estimators=50, random_state=42)
 model.fit(X, y)
 
 # Save
-with open(f"{path}/model/model.pkl",'wb') as f:
-    pickle.dump(model, f)
-
+try:
+    model_path = pathlib.Path(__file__).parent.parent / "model" / "model.pkl"
+    model_path = model_path.resolve()
+    model_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(model_path, 'wb') as f:
+        pickle.dump(model, f)
+except Exception as e:
+    print(f"An error occurred while saving model: {e}")

@@ -8,7 +8,9 @@ csv_name = DATA_URL.split("/")[-1]
 data_path = pathlib.Path(__file__).parent.parent / "data" / csv_name
 data_path = data_path.resolve() 
 
-try:    
+try:
+    data_path.parent.mkdir(parents=True, exist_ok=True)
+
     df = pd.read_csv(DATA_URL)
     df.to_csv(data_path, index=False)
 except Exception as e:
