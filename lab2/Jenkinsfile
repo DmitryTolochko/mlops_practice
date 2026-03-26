@@ -16,25 +16,25 @@ pipeline {
 
         stage('Download data') {
             steps {
-                sh 'python lab2/scripts/load_data.py'
+                sh 'python3 lab2/scripts/load_data.py'
             }
         }
 
         stage('Preprocess data') {
             steps {
-                sh 'python lab2/scripts/preprocess_data.py'
+                sh 'python3 lab2/scripts/preprocess_data.py'
             }
         }
 
         stage('Train model') {
             steps {
-                sh 'python lab2/scripts/train_model.py'
+                sh 'python3 lab2/scripts/train_model.py'
             }
         }
         
         stage('Evaluate model') {
             steps {
-                sh 'python lab2/scripts/evaluate_model.py'
+                sh 'python3 lab2/scripts/evaluate_model.py'
             }
         }
     }
