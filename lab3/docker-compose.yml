@@ -1,0 +1,11 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mlops-lab3-api:latest
+    pull_policy: build
+    ports:
+      - "8000:8000"
+    environment:
+      MODEL_PATH: /app/model/artifact.pkl

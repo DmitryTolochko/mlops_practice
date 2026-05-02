@@ -1,0 +1,8 @@
+__pycache__
+*.pyc
+.git
+.venv
+venv
+*.md
+build-image.ps1
+build-image.sh
